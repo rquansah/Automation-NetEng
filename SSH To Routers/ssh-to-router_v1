@@ -34,7 +34,6 @@ print (output4)
 print()
 print (output5)
 print()
-
 '''
 output6 = net_connect.send_config_from_file('/Users/rquansah/Documents/PYTHON PROGRAMS/SSH To Router/commands_ios.txt')
 print (output6)
