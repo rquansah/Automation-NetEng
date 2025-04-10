@@ -1,0 +1,24 @@
+#Script to SSH to multiple devices
+from netmiko import ConnectHandler
+ 
+with open('/Users/rquansah/Documents/PYTHON PROGRAMS/SSH To Routers/Devices/CiscoRouters/eve-ng-cisco-routers.txt') as routers:
+    for IP in routers:
+        Router = {
+            'device_type': 'cisco_ios',
+            'ip': IP,
+            'username': 'CQScripter',
+            'password': 'Cardinal21',
+            'port': '22',
+        }
+
+        net_connect = ConnectHandler(**Router)
+        print()
+        print ('Connecting to ' + IP)
+        print('-'*79)
+        print()
+        output = net_connect.send_config_from_file('/Users/rquansah/Documents/PYTHON PROGRAMS/SSH To Routers/ConfigCommands/eve-ng-cisco-rtr-config.txt')
+        print (output)
+        print('-'*79)
+        
+# Finally close the connection
+net_connect.disconnect()
